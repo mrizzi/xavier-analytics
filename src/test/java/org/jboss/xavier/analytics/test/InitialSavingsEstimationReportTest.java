@@ -64,7 +64,7 @@ public class InitialSavingsEstimationReportTest
                 .filter(Files::isRegularFile)
                 .forEach(file -> {
                     File ruleFile = new File(file.toUri());
-                    if (ResourceType.DRL.matchesExtension(ruleFile.getName()) /*&& ruleFile.getName().endsWith("Environment.drl")*/)
+                    if (ResourceType.DRL.matchesExtension(ruleFile.getName()))
                     {
                         kieFileSystem.write(ResourceFactory.newFileResource(ruleFile).setResourceType(ResourceType.DRL));
                     }
@@ -107,7 +107,7 @@ public class InitialSavingsEstimationReportTest
     public void test_SourceNewELAIndicator_0()
     {
         // check that the numbers of rule from the DRL file is the number of rules loaded
-        Utils.checkLoadedRulesNumber(kieSession, "org.jboss.xavier.analytics.rules", 23);
+        Utils.checkLoadedRulesNumber(kieSession, "org.jboss.xavier.analytics.rules", 25);
 
         // create a Map with the facts (i.e. Objects) you want to put in the working memory
         Map<String, Object> facts = new HashMap<>();
@@ -136,7 +136,7 @@ public class InitialSavingsEstimationReportTest
         Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
 
         // check that the number of rules fired is what you expect
-        Assert.assertEquals(17, results.get(NUMBER_OF_FIRED_RULE_KEY));
+        Assert.assertEquals(20, results.get(NUMBER_OF_FIRED_RULE_KEY));
         // check the names of the rules fired are what you expect
         Utils.verifyRulesFiredNames(this.agendaEventListener,
                 // Environment
@@ -146,12 +146,13 @@ public class InitialSavingsEstimationReportTest
                 // SourceCosts
                 "SourceCostsRules_0", "SourceCostsRules_sourceNewELAIndicator_0",
                 // SourceRampDownCosts
-                "SourceRampDownCostsRules"
+                "SourceRampDownCostsRules",
                 // RHVRampUpCosts
+                "RHVRampUpCosts",
                 // RHVYearByYearCosts
-                // "RHVYearByYearCostsRules",
+                 "RHVYearByYearCostsRules",
                 // RHVSavings
-                // "RHVSavingsRules",
+                 "RHVSavingsRules"
                 // RHVAdditionalContainerCapacity
                 // RHVOrderForm
                 );
