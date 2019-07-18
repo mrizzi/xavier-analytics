@@ -1,12 +1,7 @@
 package org.jboss.xavier.analytics.test;
 
 import org.jboss.xavier.analytics.pojo.input.UploadFormInputDataModel;
-import org.jboss.xavier.analytics.pojo.output.EnvironmentModel;
-import org.jboss.xavier.analytics.pojo.output.InitialSavingsEstimationReportModel;
-import org.jboss.xavier.analytics.pojo.output.RHVSavingsModel;
-import org.jboss.xavier.analytics.pojo.output.RHVYearByYearCostsModel;
-import org.jboss.xavier.analytics.pojo.output.SourceCostsModel;
-import org.jboss.xavier.analytics.pojo.output.SourceRampDownCostsModel;
+import org.jboss.xavier.analytics.pojo.output.*;
 import org.jboss.xavier.analytics.pojo.support.PricingDataModel;
 import org.junit.Assert;
 import org.junit.Before;
@@ -274,31 +269,70 @@ public class InitialSavingsEstimationReportTest
         Assert.assertEquals(8927000, sourceRampDownCostsModel.getYear3SourceMaintenanceTotalValue(), 0);
 
         // RHVRampUpCosts
+        RHVRampUpCostsModel rhvRampUpCostsModel = report.getRhvRampUpCostsModel();
+        Assert.assertEquals(300, rhvRampUpCostsModel.getYear1RhvServers(), 0.01);
+        Assert.assertEquals(400, rhvRampUpCostsModel.getYear2RhvServers(), 0.01);
+        Assert.assertEquals(500, rhvRampUpCostsModel.getYear3RhvServers(), 0.01);
+        Assert.assertEquals(300, rhvRampUpCostsModel.getYear1RhvCompSubs(), 0.01);
+        Assert.assertEquals(0, rhvRampUpCostsModel.getYear2RhvCompSubs(), 0.01);
+        Assert.assertEquals(0, rhvRampUpCostsModel.getYear3RhvCompSubs(), 0.01);
+        Assert.assertEquals(0, rhvRampUpCostsModel.getYear1RhvPaidSubs(), 0.01);
+        Assert.assertEquals(400, rhvRampUpCostsModel.getYear2RhvPaidSubs(), 0.01);
+        Assert.assertEquals(500, rhvRampUpCostsModel.getYear3RhvPaidSubs(), 0.01);
+        Assert.assertEquals(0, rhvRampUpCostsModel.getYear1RhvPerServerValue(), 0.01);
+        Assert.assertEquals(375.0, rhvRampUpCostsModel.getYear2RhvPerServerValue(), 0.01);
+        Assert.assertEquals(375.0, rhvRampUpCostsModel.getYear3RhvPerServerValue(), 0.01);
+        Assert.assertEquals(0, rhvRampUpCostsModel.getYear1RhvTotalValue(), 0.01);
+        Assert.assertEquals(150000, rhvRampUpCostsModel.getYear2RhvTotalValue(), 0.01);
+        Assert.assertEquals(187500, rhvRampUpCostsModel.getYear3RhvTotalValue(), 0.01);
+        Assert.assertEquals(100, rhvRampUpCostsModel.getYear1RhvServersGrowth(), 0.01);
+        Assert.assertEquals(220, rhvRampUpCostsModel.getYear2RhvServersGrowth(), 0.01);
+        Assert.assertEquals(364, rhvRampUpCostsModel.getYear3RhvServersGrowth(), 0.01);
+        Assert.assertEquals(100, rhvRampUpCostsModel.getYear1RhvCompSubsGrowth(), 0.01);
+        Assert.assertEquals(0, rhvRampUpCostsModel.getYear2RhvCompSubsGrowth(), 0.01);
+        Assert.assertEquals(0, rhvRampUpCostsModel.getYear3RhvCompSubsGrowth(), 0.01);
+        Assert.assertEquals(0, rhvRampUpCostsModel.getYear1RhvPaidSubsGrowth(), 0.01);
+        Assert.assertEquals(220, rhvRampUpCostsModel.getYear2RhvPaidSubsGrowth(), 0.01);
+        Assert.assertEquals(364, rhvRampUpCostsModel.getYear3RhvPaidSubsGrowth(), 0.01);
+        Assert.assertEquals(375.0, rhvRampUpCostsModel.getYear1RhvPerServerGrowthValue(), 0.01);
+        Assert.assertEquals(375.0, rhvRampUpCostsModel.getYear2RhvPerServerGrowthValue(), 0.01);
+        Assert.assertEquals(375.0, rhvRampUpCostsModel.getYear3RhvPerServerGrowthValue(), 0.01);
+        Assert.assertEquals(0, rhvRampUpCostsModel.getYear1RhvTotalGrowthValue(), 0.01);
+        Assert.assertEquals(82500.0, rhvRampUpCostsModel.getYear2RhvTotalGrowthValue(), 0.01);
+        Assert.assertEquals(136500.0, rhvRampUpCostsModel.getYear3RhvTotalGrowthValue(), 0.01);
+        Assert.assertEquals(0, rhvRampUpCostsModel.getYear1RhvGrandTotalGrowthValue(), 0.01);
+        Assert.assertEquals(232500.0, rhvRampUpCostsModel.getYear2RhvGrandTotalGrowthValue(), 0.01);
+        Assert.assertEquals(324000.0, rhvRampUpCostsModel.getYear3RhvGrandTotalGrowthValue(), 0.01);
+
+
+        Assert.assertEquals(30000, rhvRampUpCostsModel.getRhvSwitchLearningSubsValue(), 0.01);
+        Assert.assertEquals(100000, rhvRampUpCostsModel.getRhvSwitchConsultValue(), 0.01);
+        Assert.assertEquals(30000, rhvRampUpCostsModel.getRhvSwitchTAndEValue(), 0.01);
 
         // RHVYearByYearCosts
-/*        RHVYearByYearCostsModel rhvYearByYearCostsModel = report.getRhvYearByYearCostsModel();
-        Assert.assertEquals(653384.0, rhvYearByYearCostsModel.getYear1RhvGrandTotalValue(), 0);
-        Assert.assertEquals(376765.0, rhvYearByYearCostsModel.getYear2RhvGrandTotalValue(), 0);
-        Assert.assertEquals(481753.0, rhvYearByYearCostsModel.getYear3RhvGrandTotalValue(), 0);
+        RHVYearByYearCostsModel rhvYearByYearCostsModel = report.getRhvYearByYearCostsModel();
+        Assert.assertEquals(6910000.0, rhvYearByYearCostsModel.getYear1RhvGrandTotalValue(), 0);
+        Assert.assertEquals(7995000.0, rhvYearByYearCostsModel.getYear2RhvGrandTotalValue(), 0);
+        Assert.assertEquals(9251000.0, rhvYearByYearCostsModel.getYear3RhvGrandTotalValue(), 0);
 
-        Assert.assertEquals(-233384.0, rhvYearByYearCostsModel.getYear1RhvBudgetFreedHighValue(), 0);
-        Assert.assertEquals(-337917.0, rhvYearByYearCostsModel.getYear1RhvBudgetFreedLikelyValue(), 0);
-        Assert.assertEquals(-353384.0, rhvYearByYearCostsModel.getYear1RhvBudgetFreedLowValue(), 0);
+        Assert.assertEquals(23465000.0, rhvYearByYearCostsModel.getYear1RhvBudgetFreedHighValue(), 0);
+        Assert.assertEquals(18402500.0, rhvYearByYearCostsModel.getYear1RhvBudgetFreedLikelyValue(), 0);
+        Assert.assertEquals(13340000.0, rhvYearByYearCostsModel.getYear1RhvBudgetFreedLowValue(), 0);
 
-        Assert.assertEquals(43235.0, rhvYearByYearCostsModel.getYear2RhvBudgetFreedHighValue(), 0);
-        Assert.assertEquals(-61298.0, rhvYearByYearCostsModel.getYear2RhvBudgetFreedLikelyValue(), 0);
-        Assert.assertEquals(-76765.0, rhvYearByYearCostsModel.getYear2RhvBudgetFreedLowValue(), 0);
+        Assert.assertEquals(22380000.0, rhvYearByYearCostsModel.getYear2RhvBudgetFreedHighValue(), 0);
+        Assert.assertEquals(17317500.0, rhvYearByYearCostsModel.getYear2RhvBudgetFreedLikelyValue(), 0);
+        Assert.assertEquals(12255000.0, rhvYearByYearCostsModel.getYear2RhvBudgetFreedLowValue(), 0);
 
-        Assert.assertEquals(-61753.0, rhvYearByYearCostsModel.getYear3RhvBudgetFreedHighValue(), 0);
-        Assert.assertEquals(-166286.0, rhvYearByYearCostsModel.getYear3RhvBudgetFreedLikelyValue(), 0);
-        Assert.assertEquals(-181753.0, rhvYearByYearCostsModel.getYear3RhvBudgetFreedLowValue(), 0);*/
+        Assert.assertEquals(21124000.0, rhvYearByYearCostsModel.getYear3RhvBudgetFreedHighValue(), 0);
+        Assert.assertEquals(16061500.0, rhvYearByYearCostsModel.getYear3RhvBudgetFreedLikelyValue(), 0);
+        Assert.assertEquals(10999000.0, rhvYearByYearCostsModel.getYear3RhvBudgetFreedLowValue(), 0);
 
         // RHVSavings
-/*        RHVSavingsModel savingsModel = report.getRhvSavingsModel();
+        RHVSavingsModel savingsModel = report.getRhvSavingsModel();
 
-        Assert.assertEquals(67191600, savingsModel.getRhvSaveHighValue(), 0);
-        Assert.assertEquals(52004100, savingsModel.getRhvSaveLikelyValue(), 0);
-        Assert.assertEquals(36816600, savingsModel.getRhvSaveLowValue(), 0);*/
+        Assert.assertEquals(66969000, savingsModel.getRhvSaveHighValue(), 0);
+        Assert.assertEquals(51781500, savingsModel.getRhvSaveLikelyValue(), 0);
+        Assert.assertEquals(36594000, savingsModel.getRhvSaveLowValue(), 0);
 
         // RHVAdditionalContainerCapacity
 
