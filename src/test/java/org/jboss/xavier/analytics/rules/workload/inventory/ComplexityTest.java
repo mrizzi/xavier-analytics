@@ -35,21 +35,12 @@ public class ComplexityTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(2, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "No_Flag_Supported_OS");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -72,21 +63,12 @@ public class ComplexityTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(2, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "One_Flag_Supported_OS");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -110,21 +92,12 @@ public class ComplexityTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(2, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "More_Than_One_Flag_Supported_OS");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -147,21 +120,12 @@ public class ComplexityTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(2, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "No_Flags_Not_Supported_OS");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -184,21 +148,12 @@ public class ComplexityTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(2, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "One_Or_More_Flags_Not_Supported_OS");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -222,21 +177,12 @@ public class ComplexityTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(2, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "One_Or_More_Flags_Not_Supported_OS");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -259,21 +205,12 @@ public class ComplexityTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(2, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Not_Detected_OS");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -296,21 +233,12 @@ public class ComplexityTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(2, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Not_Detected_OS");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -336,21 +264,12 @@ public class ComplexityTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(2, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Not_Detected_OS");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());

@@ -3,6 +3,7 @@ package org.jboss.xavier.analytics.rules.initialcostsaving;
 import org.jboss.xavier.analytics.pojo.input.UploadFormInputDataModel;
 import org.jboss.xavier.analytics.pojo.output.EnvironmentModel;
 import org.jboss.xavier.analytics.pojo.output.InitialSavingsEstimationReportModel;
+import org.jboss.xavier.analytics.pojo.output.workload.inventory.WorkloadInventoryReportModel;
 import org.jboss.xavier.analytics.rules.BaseTest;
 import org.jboss.xavier.analytics.test.Utils;
 import org.junit.Assert;
@@ -44,21 +45,12 @@ public class EnvironmentTest extends BaseTest {
         inputDataModel.setFileName(FILE_NAME);
         facts.put("inputDataModel", inputDataModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(1, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "Copy input fields and agenda controller");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<InitialSavingsEstimationReportModel> reports = objects.stream()
-                .filter(object -> object instanceof InitialSavingsEstimationReportModel)
-                .map(object -> (InitialSavingsEstimationReportModel) object)
-                .collect(Collectors.toList());
+        List<InitialSavingsEstimationReportModel> reports = extractModels(results, InitialSavingsEstimationReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());

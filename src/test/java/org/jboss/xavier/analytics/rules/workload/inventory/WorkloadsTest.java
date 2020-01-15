@@ -50,21 +50,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Tomcat", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -97,21 +88,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_EAP", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -144,21 +126,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_EAP", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -191,21 +164,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_EAP", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -238,21 +202,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_EAP", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -285,21 +240,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_EAP", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -332,21 +278,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_EAP", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -379,21 +316,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_EAP", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -426,21 +354,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Websphere", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -473,21 +392,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Websphere", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -520,21 +430,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Websphere", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -569,21 +470,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Websphere","SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -617,21 +509,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Websphere", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -663,21 +546,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Weblogic", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -710,21 +584,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Weblogic", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -757,21 +622,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Weblogic", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -804,21 +660,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Weblogic", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -851,21 +698,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Oracle_DB", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -898,21 +736,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_SAP_HANA", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -945,21 +774,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Microsoft_SQL_Server_On_Linux", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -991,21 +811,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Microsoft_SQL_Server_On_Windows", "SsaEnabled_System_Services_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -1036,21 +847,12 @@ public class WorkloadsTest extends BaseTest {
 
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(3, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "Workloads_Microsoft_SQL_Server_On_Windows","SsaDisabled_System_Services_Not_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -1077,21 +879,12 @@ public class WorkloadsTest extends BaseTest {
         WorkloadInventoryReportModel workloadInventoryReportModel = new WorkloadInventoryReportModel();
         facts.put("workloadInventoryReportModel",workloadInventoryReportModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(2, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "SsaDisabled_System_Services_Not_Present");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());

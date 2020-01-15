@@ -72,29 +72,16 @@ public class PricingTest extends BaseTest
         facts.put("reportModel", reportModel);
         facts.put("agendaGroup", "Pricing");
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(14, results.get(NUMBER_OF_FIRED_RULE_KEY));
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-
-        List<InitialSavingsEstimationReportModel> reports = objects.stream()
-                .filter(object -> object instanceof InitialSavingsEstimationReportModel)
-                .map(object -> (InitialSavingsEstimationReportModel) object)
-                .collect(Collectors.toList());
+        List<InitialSavingsEstimationReportModel> reports = extractModels(results, InitialSavingsEstimationReportModel.class);
 
         // just one InitialSavingsEstimationReportModel has to be available
         Assert.assertEquals(1, reports.size());
 
-        List<PricingDataModel> pricingDataModelList = objects.stream()
-                .filter(object -> object instanceof PricingDataModel)
-                .map(object -> (PricingDataModel) object)
-                .collect(Collectors.toList());
+        List<PricingDataModel> pricingDataModelList = extractModels(results, PricingDataModel.class);
 
         // just one PricingDataModel has to be created
         Assert.assertEquals(1, pricingDataModelList.size());

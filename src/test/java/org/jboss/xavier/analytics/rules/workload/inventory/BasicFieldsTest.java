@@ -52,21 +52,12 @@ public class BasicFieldsTest extends BaseTest {
         vmWorkloadInventoryModel.setScanRunDate(new SimpleDateFormat("yyyy-M-dd'T'hh:mm:ss.S").parse("2019-09-18T14:52:45.871Z"));
         facts.put("vmWorkloadInventoryModel", vmWorkloadInventoryModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(1, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "Copy basic fields and agenda controller");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());
@@ -105,21 +96,12 @@ public class BasicFieldsTest extends BaseTest {
         vmWorkloadInventoryModel.setScanRunDate(new SimpleDateFormat("yyyy-M-dd'T'hh:mm:ss.S").parse("2019-09-18T14:52:45.871Z"));
         facts.put("vmWorkloadInventoryModel", vmWorkloadInventoryModel);
 
-        List<Command> commands = new ArrayList<>();
-        commands.addAll(Utils.newInsertCommands(facts));
-        commands.add(CommandFactory.newFireAllRules(NUMBER_OF_FIRED_RULE_KEY));
-        commands.add(CommandFactory.newGetObjects(GET_OBJECTS_KEY));
-
-        Map<String, Object> results = Utils.executeCommandsAndGetResults(kieSession, commands);
+        Map<String, Object> results = createAndExecuteCommandsAndGetResults(facts);
 
         Assert.assertEquals(1, results.get(NUMBER_OF_FIRED_RULE_KEY));
         Utils.verifyRulesFiredNames(this.agendaEventListener, "Copy basic fields and agenda controller");
 
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        List<WorkloadInventoryReportModel> reports = objects.stream()
-                .filter(object -> object instanceof WorkloadInventoryReportModel)
-                .map(object -> (WorkloadInventoryReportModel) object)
-                .collect(Collectors.toList());
+        List<WorkloadInventoryReportModel> reports = extractModels(results, WorkloadInventoryReportModel.class);
 
         // just one report has to be created
         Assert.assertEquals(1, reports.size());

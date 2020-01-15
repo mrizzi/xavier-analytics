@@ -8,6 +8,10 @@ import org.kie.api.event.rule.DebugAgendaEventListener;
 import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
 import org.kie.api.runtime.StatelessKieSession;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import static org.mockito.Mockito.mock;
 
 public abstract class BaseIntegrationTest {
@@ -42,5 +46,14 @@ public abstract class BaseIntegrationTest {
     @After
     public void tearDown()
     {
+    }
+
+    public <T> List<T> extractModels(Map<String, Object> results, Class<T> model)
+    {
+        final List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
+        return objects.stream()
+                .filter(model::isInstance)
+                .map(model::cast)
+                .collect(Collectors.toList());
     }
 }

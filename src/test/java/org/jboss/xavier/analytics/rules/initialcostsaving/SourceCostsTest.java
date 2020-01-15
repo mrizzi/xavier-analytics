@@ -78,13 +78,9 @@ public class SourceCostsTest extends BaseTest
         // check the names of the rules fired are what you expect
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "SourceCostsRules_0", "SourceCostsRules_sourceNewELAIndicator_0");
 
-        // retrieve the List of Objects that were available in the working memory from the results
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        // filter the type of object you're interested in checking (e.g. InitialSavingsEstimationReportModel)
-        List<InitialSavingsEstimationReportModel> reports = objects.stream()
-                .filter(object -> object instanceof InitialSavingsEstimationReportModel)
-                .map(object -> (InitialSavingsEstimationReportModel) object)
-                .collect(Collectors.toList());
+        // this method retrieves the List of Objects that were available in the working memory from the results
+        // and filters the type of object you're interested in retrieving (e.g. InitialSavingsEstimationReportModel)
+        List<InitialSavingsEstimationReportModel> reports = extractModels(results, InitialSavingsEstimationReportModel.class);
 
         // Check that the number of object is the right one (in this case, there must be just one report)
         Assert.assertEquals(1, reports.size());
@@ -171,13 +167,9 @@ public class SourceCostsTest extends BaseTest
         // check the names of the rules fired are what you expect
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "SourceCostsRules_0", "SourceCostsRules_sourceNewELAIndicator_1");
 
-        // retrieve the List of Objects that were available in the working memory from the results
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        // filter the type of object you're interested in checking (e.g. InitialSavingsEstimationReportModel)
-        List<InitialSavingsEstimationReportModel> reports = objects.stream()
-                .filter(object -> object instanceof InitialSavingsEstimationReportModel)
-                .map(object -> (InitialSavingsEstimationReportModel) object)
-                .collect(Collectors.toList());
+        // this method retrieves the List of Objects that were available in the working memory from the results
+        // and filters the type of object you're interested in retrieving (e.g. InitialSavingsEstimationReportModel)
+        List<InitialSavingsEstimationReportModel> reports = extractModels(results, InitialSavingsEstimationReportModel.class);
 
         // Check that the number of object is the right one (in this case, there must be just one report)
         Assert.assertEquals(1, reports.size());
@@ -264,13 +256,9 @@ public class SourceCostsTest extends BaseTest
         // check the names of the rules fired are what you expect
         Utils.verifyRulesFiredNames(this.agendaEventListener, "AgendaFocusForTest", "SourceCostsRules_0", "SourceCostsRules_sourceNewELAIndicator_2");
 
-        // retrieve the List of Objects that were available in the working memory from the results
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
-        // filter the type of object you're interested in checking (e.g. InitialSavingsEstimationReportModel)
-        List<InitialSavingsEstimationReportModel> reports = objects.stream()
-                .filter(object -> object instanceof InitialSavingsEstimationReportModel)
-                .map(object -> (InitialSavingsEstimationReportModel) object)
-                .collect(Collectors.toList());
+        // this method retrieves the List of Objects that were available in the working memory from the results
+        // and filters the type of object you're interested in retrieving (e.g. InitialSavingsEstimationReportModel)
+        List<InitialSavingsEstimationReportModel> reports = extractModels(results, InitialSavingsEstimationReportModel.class);
 
         // Check that the number of object is the right one (in this case, there must be just one report)
         Assert.assertEquals(1, reports.size());

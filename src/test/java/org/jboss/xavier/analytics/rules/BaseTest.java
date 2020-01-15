@@ -100,7 +100,7 @@ public abstract class BaseTest {
 
     public <T> List<T> extractModels(Map<String, Object> results, Class<T> model)
     {
-        List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
+        final List<Object> objects = (List<Object>) results.get((GET_OBJECTS_KEY));
         return objects.stream()
                 .filter(model::isInstance)
                 .map(model::cast)
